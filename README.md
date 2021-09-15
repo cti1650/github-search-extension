@@ -1,12 +1,13 @@
 # はじめに
-このリポジトリは、Google Chromeの拡張をNext.jsで書くためのテンプレートリポジトリになります。
+
+このリポジトリは、Google Chrome の拡張を Next.js で書くためのテンプレートリポジトリになります。
 
 # 使い方
 
-## 1. リポジトリをcloneする
+## 1. リポジトリを clone する
 
 ```bash
-git clone https://github.com/cti1650/tailwindcss-extension.git
+git clone https://github.com/cti1650/github-searcher-extension.git
 ```
 
 ## 2. ライブラリをインストールする
@@ -15,21 +16,23 @@ git clone https://github.com/cti1650/tailwindcss-extension.git
 yarn
 ```
 
-## 3. Chrome Extensionを作成する
+## 3. Chrome Extension を作成する
 
 ```bash
 yarn export
 ```
 
-## 4. Chrome Extensionを登録する
+## 4. Chrome Extension を登録する
 
-#### a. Chrome拡張機能ページにアクセス  
-  ```
-  chrome://extensions/
-  ```
-#### b. 拡張機能をパッケージ化  
-#### c. extensionsディレクトリをアップロード  
+#### a. Chrome 拡張機能ページにアクセス
 
+```
+chrome://extensions/
+```
+
+#### b. 拡張機能をパッケージ化
+
+#### c. extensions ディレクトリをアップロード
 
 # 開発について
 
@@ -44,7 +47,7 @@ yarn export
 
 ## 2. 各オプション機能の実行
 
-#### a. 拡張機能のZIP化
+#### a. 拡張機能の ZIP 化
 
 ```bash
 yarn zip
@@ -52,8 +55,8 @@ yarn zip
 
 #### b. 拡張機能用アイコンの自動生成
 
-manifest.jsonと同一階層にicons/icon.pngファイル(サイズ128px以上)を格納してから以下のコマンドを実行してください。  
-実行すると各サイズ(16px,19px,48px,128px)のアイコン生成とmanifest.jsonへのパス設定を自動的に行います！
+manifest.json と同一階層に icons/icon.png ファイル(サイズ 128px 以上)を格納してから以下のコマンドを実行してください。  
+実行すると各サイズ(16px,19px,48px,128px)のアイコン生成と manifest.json へのパス設定を自動的に行います！
 
 ```bash
 yarn mkicon
@@ -61,21 +64,22 @@ yarn mkicon
 
 ## 3. 拡張機能のバージョン管理
 
-#### a. メジャーアップデート（機能に大きな変更があった場合）  
+#### a. メジャーアップデート（機能に大きな変更があった場合）
 
 ```bash
 yarn major
 ```
 
-#### b. マイナーアップデート（後方互換性を保つ変更があった場合）  
+#### b. マイナーアップデート（後方互換性を保つ変更があった場合）
 
 ```bash
 yarn minor
 ```
 
-#### c. パッチアップデート（バグ修正が行われた場合）  
+#### c. パッチアップデート（バグ修正が行われた場合）
 
 ```bash
 yarn patch
 ```
+
 ※ `yarn export`時にはパッチアップデートが自動実行されます！

@@ -7,7 +7,7 @@
 ## 1. リポジトリを clone する
 
 ```bash
-git clone https://github.com/cti1650/github-searcher-extension.git
+git clone https://github.com/cti1650/github-search-extension.git
 ```
 
 ## 2. ライブラリをインストールする

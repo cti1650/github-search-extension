@@ -21,6 +21,11 @@ yarn
 ```bash
 yarn export
 ```
+以下のコマンドを実行するとPopupページの見た目を  
+localhostで検証することができます！
+```bash
+yarn dev
+```
 
 ## 4. Chrome Extension を登録する
 
@@ -43,6 +48,11 @@ chrome://extensions/
 
 ```bash
 yarn export
+```
+以下のコマンドを実行するとPopupページの見た目を  
+localhostで検証することができます！
+```bash
+yarn dev
 ```
 
 ## 2. 各オプション機能の実行

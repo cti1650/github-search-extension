@@ -1,9 +1,9 @@
 const tailwindcssExtension = chrome.contextMenus.create({
-  id: 'tailwindcss-extension',
-  title: 'Tailwindcss',
+  id: 'github-search-extension',
+  title: 'GitHub',
   type: 'normal',
   contexts: ['all'],
   onclick: (info, tab) => {
-    window.open('https://tailwindcss.com/docs', '_blank');
+    window.open('https://github.com/search', '_blank');
   },
 });

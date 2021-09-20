@@ -1,7 +1,7 @@
 {
   "name": "GitHub Search Extension",
   "description": "GitHub Search Extension",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "browser_action": {
     "default_popup": "./dist/index.html",
     "default_icon": {

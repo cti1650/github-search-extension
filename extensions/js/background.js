@@ -1,9 +1,13 @@
-const tailwindcssExtension = chrome.contextMenus.create({
+const githubSearchExtension = chrome.contextMenus.create({
   id: 'github-search-extension',
-  title: 'GitHub',
+  title: 'GitHub Code Search',
   type: 'normal',
-  contexts: ['all'],
+  contexts: ['page', 'frame', 'selection'],
   onclick: (info, tab) => {
-    window.open('https://github.com/search', '_blank');
+    window.open(
+      'https://github.com/search?type=code&q=' +
+        encodeURIComponent(info.selectionText),
+      '_blank'
+    );
   },
 });

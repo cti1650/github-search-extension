@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "autoprefixer": "^10.3.4",
+    "chrome_extension_maker_tools": "https://github.com/cti1650/chrome_extension_maker_tools",
     "next": "^11.1.2",
     "postcss": "^8.3.6",
     "react": "^17.0.2",
@@ -11,14 +12,7 @@
     "dev": "next dev",
     "start": "next start",
     "build": "next build",
-    "export": "next build && next export -o extensions/dist && yarn patch",
-    "zip": "python scripts/main.py zip",
-    "mkicon": "python scripts/main.py mkicon",
-    "manifest": "python scripts/main.py manifest",
-    "release": "python scripts/main.py release",
-    "major": "python scripts/main.py major",
-    "minor": "python scripts/main.py minor",
-    "patch": "python scripts/main.py patch"
+    "export": "next build && next export -o extensions/dist && yarn ext-patch"
   },
   "devDependencies": {
     "@types/node": "^16.9.1",

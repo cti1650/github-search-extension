@@ -106,3 +106,5 @@ typings/
 .dynamodb/
 
 extensions/dist
+
+.DS_Store

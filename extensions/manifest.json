@@ -1,13 +1,21 @@
 {
   "name": "GitHub Search Extension",
   "description": "GitHub Search Extension",
-  "version": "1.0.6",
+  "version": "1.0.14",
   "browser_action": {
     "default_popup": "./dist/index.html",
     "default_icon": {
       "32": "icons/icon_32.png",
       "64": "icons/icon_64.png",
       "128": "icons/icon_128.png"
+    }
+  },
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Alt+G",
+        "mac": "Alt+G"
+      }
     }
   },
   "icons": {

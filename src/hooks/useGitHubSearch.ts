@@ -6,15 +6,19 @@ type Props = {
 
 export const useGitHubSearch = (props: Props) => {
   const { keyword, exclusionKeyword, extensionKeyword } = props;
-  const keywords = keyword.split(" ");
-  const exclusionKeywords = exclusionKeyword.split(" ").map((word) => {
-    if (word) {
-      return "-" + word;
-    }
-  });
+  const keywords = keyword.split(" ").filter((v) => v);
+  const exclusionKeywords = exclusionKeyword
+    .split(" ")
+    .filter((v) => v)
+    .map((word) => {
+      if (word) {
+        return "-" + word;
+      }
+    });
   const extensionKeywords = extensionKeyword
     .replaceAll(",", " ")
     .split(" ")
+    .filter((v) => v)
     .map((word) => {
       if (word) {
         if (word.trim().indexOf(".") > 0) {

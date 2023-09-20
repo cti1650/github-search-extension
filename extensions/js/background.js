@@ -1,13 +1,13 @@
-const githubSearchExtension = chrome.contextMenus.create({
+chrome.contextMenus.create({
   id: 'github-search-extension',
   title: 'GitHub Code Search',
-  type: 'normal',
   contexts: ['page', 'frame', 'selection'],
-  onclick: (info, tab) => {
-    window.open(
-      'https://github.com/search?type=code&q=' +
-        encodeURIComponent(info.selectionText),
-      '_blank'
-    );
-  },
+});
+
+chrome.contextMenus.onClicked.addListener((info, tab) => {
+  if (info.menuItemId === 'github-search-extension') {
+    const searchText = encodeURIComponent(info.selectionText);
+    const searchUrl = `https://github.com/search?type=code&q=${searchText}`;
+    chrome.tabs.create({ url: searchUrl });
+  }
 });

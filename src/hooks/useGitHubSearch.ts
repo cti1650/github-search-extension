@@ -5,53 +5,60 @@ type Props = {
 };
 
 export const useGitHubSearch = (props: Props) => {
-  const { keyword, exclusionKeyword,extensionKeyword } = props;
-  const encodedKeyword = encodeURIComponent(keyword);
-  const encodedExclusionKeyword = encodeURIComponent(
-    exclusionKeyword
-      .split(" ")
-      .map((word) => {
-        if (word) {
-          return "-" + word;
+  const { keyword, exclusionKeyword, extensionKeyword } = props;
+  const keywords = keyword.split(" ");
+  const exclusionKeywords = exclusionKeyword.split(" ").map((word) => {
+    if (word) {
+      return "-" + word;
+    }
+  });
+  const extensionKeywords = extensionKeyword
+    .replaceAll(",", " ")
+    .split(" ")
+    .map((word) => {
+      if (word) {
+        if (word.trim().indexOf(".") > 0) {
+          return "path:" + word.trim();
+        } else {
+          return "path:*." + word.trim();
         }
-      })
-      .join(" ")
-  );
-  const encodedExtensionKeyword = encodeURIComponent(
-    extensionKeyword
-      .split(",")
-      .map((word) => {
-        if (word) {
-          if(word.trim().indexOf(".") > 0){
-            return "filename:" + word.trim();
-          }else{
-            return "extension:" + word.trim();
-          }
-        }
-      })
-      .join(" ")
-  );
+      }
+    });
+  const parseQuery = (arr) => {
+    return arr.includes("OR")
+      ? [
+          `(${arr
+            .filter((v) => v)
+            .join(" AND ")
+            .replaceAll(" AND OR AND ", " OR ")})`,
+        ]
+      : arr;
+  };
+  const baseKeywords = [
+    ...parseQuery(keywords),
+    ...parseQuery(exclusionKeywords),
+    ...(extensionKeywords.length
+      ? [`(${extensionKeywords.join(" OR ")})`]
+      : []),
+  ]
+    .filter((v) => v)
+    .join(" AND ");
+  const searchKeywordQuery = encodeURIComponent(baseKeywords);
   const Open = (type: "Code" | "Packages" | "Repositories") => {
-    const query = (encodedKeyword + " " + encodedExclusionKeyword + " " + encodedExtensionKeyword).trim()
+    const query = searchKeywordQuery.trim();
     switch (type) {
       case "Code":
-        window.open(
-          "https://github.com/search?type=code&q=" +
-          query,
-          "_blank"
-        );
+        window.open("https://github.com/search?type=code&q=" + query, "_blank");
         break;
       case "Packages":
         window.open(
-          "https://github.com/search?type=registrypackages&q=" +
-          query,
+          "https://github.com/search?type=registrypackages&q=" + query,
           "_blank"
         );
         break;
       case "Repositories":
         window.open(
-          "https://github.com/search?type=repositories&q=" +
-          query,
+          "https://github.com/search?type=repositories&q=" + query,
           "_blank"
         );
         break;
